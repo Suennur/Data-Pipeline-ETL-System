@@ -9,16 +9,16 @@ from pyspark.sql.functions import when
 # UDF Tanımı
 def parse_json(json_str):
     try:
-        # JSON string'ini yükleyip parse ediyoruz
+        # JSON string'inin yüklenip parse edilmesi
         json_obj = json.loads(json_str)
-        # Sırayla her bir key-value çiftini alıyoruz
+        # Sırayla her bir key-value çiftinin alınması
         result = {}
         for key, value in json_obj.items():
-            # Anahtar değerini kullanarak her bir değeri alıyoruz
+            # Anahtar değerini kullanarak her bir değerin alınması
             result[key] = float(list(value.values())[0])
         return result
     except json.JSONDecodeError:
-        # Hata durumunda boş bir sözlük döndürüyoruz
+        # Hata durumunda boş bir sözlük döndürülmesi
         return {key: None for key in json_obj.keys()}
 
 # UDF'yi kaydediyoruz
