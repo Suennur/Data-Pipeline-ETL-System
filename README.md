@@ -97,5 +97,7 @@ Integrate with a web dashboard to display live predictions
 
 ## 🤝 Contact
 Developed by Suennur Altaş
+
 📫 Email: suennur.altas@gmail.com
+
 🔗 LinkedIn | GitHub
