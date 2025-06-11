@@ -2,15 +2,16 @@
 
 This project demonstrates a **real-time data streaming and analytics pipeline** using Apache Kafka and Apache Spark. The system is designed to process and analyze streaming data based on the Titanic dataset from Kaggle's "Machine Learning from Disaster" competition.
 
-The goal of this project is to build a **small-scale data analytics system** capable of performing real-time machine learning predictions on streaming data.
+The goal of this project is to build a **small-scale data analytics system** capable of performing **real-time machine learning predictions** on streaming data. The machine learning model is trained using **Logistic Regression** with Spark MLlib.
 
 ---
 
 ## 🎯 Project Goals
 - Build a **real-time data streaming pipeline**.
 - Apply **ETL (Extract, Transform, Load)** steps on streaming data.
-- Perform **online machine learning predictions** in real-time.
-- Display prediction results and accuracy on the terminal interface instantly.
+- Train a Logistic Regression model with PySpark MLlib.
+- Perform **online machine learning predictions** in real-time using the trained model.
+- Display prediction results and model accuracy on the terminal interface instantly.
 
 ---
 
@@ -20,35 +21,21 @@ The goal of this project is to build a **small-scale data analytics system** cap
 |---------------------|------------------------|
 | Streaming           | Apache Kafka           |
 | Data Processing     | Apache Spark Streaming |
-| Machine Learning    | Spark MLlib, Python    |
+| Machine Learning    | Spark MLlib, Logistic Regression, Python |
 | Data Format         | CSV                    |
-
----
-
-## 📦 Project Structure
-
-data-pipeline-etl-system/
-├── kafka_producer.py # Sends data from CSV to Kafka topic
-├── spark_streaming.py # Reads streaming data from Kafka, processes it, runs ML model
-├── model_training.py # Trains and saves the ML model
-├── dataset/
-│ └── train.csv # Titanic dataset
-├── requirements.txt # Python dependencies
-└── README.md
-
----
-
+| Data Preprocessing  | pandas, scikit-learn, matplotlib, seaborn |
 
 ---
 
 ## 🔄 Workflow
 
 1. **Data Source:** Titanic dataset (CSV format)
-2. **Producer:** `kafka_producer.py` sends data row-by-row to Kafka topic.
-3. **Streaming:** Apache Spark consumes data in real-time from Kafka.
-4. **Data Processing:** Each incoming row is pre-processed and assembled into a DataFrame.
-5. **Model Prediction:** The trained ML model makes a prediction on each row instantly.
-6. **Result Display:** Predictions and model accuracy are printed to the terminal in real-time.
+2. **Data Preprocessing:** Missing values were imputed, categorical features were label encoded, and unnecessary columns were dropped using pandas and scikit-learn.
+3. **Producer:** `kafka_producer.py` sends data row-by-row to Kafka topic.
+4. **Streaming:** Apache Spark consumes data in real-time from Kafka.
+5. **Data Processing:** Each incoming row is pre-processed and assembled into a DataFrame.
+6. **Model Prediction:** The trained ML model makes a prediction on each row instantly.
+7. **Result Display:** Predictions and model accuracy are printed to the terminal in real-time.
 
 ---
 
@@ -68,7 +55,9 @@ cd data-pipeline-etl-system
 
 ---
 
-🎯 Key Features
+## 🎯 Key Features
+ Data preprocessing with missing value imputation, label encoding, and feature selection
+
 Real-time data ingestion with Apache Kafka
 
 Real-time processing with Apache Spark Streaming
@@ -79,21 +68,34 @@ Streaming visualization in terminal interface
 
 ---
 
-🔍 Dataset
+## 🔍 Dataset
 Dataset used: Titanic - Machine Learning from Disaster
 
 ---
 
-🚀 Future Improvements
-Dockerize the entire system for easier deployment
+## 🧹 Data Preprocessing Details
+
+Data preprocessing was performed using pandas and scikit-learn:
+- Missing values in the "Age" column were imputed using the mean.
+- Categorical variables like "Sex" and "Embarked" were label encoded.
+- Irrelevant columns such as "Cabin", "Name", "Ticket", and "PassengerId" were removed.
+- Data was split into training and testing sets using an 80-20 split.
+
+Preprocessing code is provided in the `preprocessing.ipynb` notebook.
+
+---
+
+## 🚀 Future Improvements
 
 Add monitoring and visualization with Grafana and Prometheus
+
+Dockerize the entire system for easier deployment
 
 Integrate with a web dashboard to display live predictions
 
 ---
 
-🤝 Contact
+## 🤝 Contact
 Developed by Suennur Altaş
 📫 Email: suennur.altas@gmail.com
 🔗 LinkedIn | GitHub
